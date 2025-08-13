@@ -1,0 +1,36 @@
+###register
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "pouria",
+  "email": "pooria.babaie2002@gmail.com",
+  "password": "Secret123?"
+}
+
+### لاگین با یوزرنیم
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "pouria",
+  "password": "Secret123?"
+}
+
+### لاگین با ایمیل
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "pooria.babaie2002@gmail.com",
+  "password": "Secret123?"
+}
+
+### لاگین اشتباه
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "wronguser",
+  "password": "wrongpass"
+}
