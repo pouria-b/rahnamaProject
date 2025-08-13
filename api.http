@@ -1,4 +1,4 @@
-###register
+### ثبت‌ نام
 POST http://localhost:3000/register
 Content-Type: application/json
 
@@ -8,7 +8,17 @@ Content-Type: application/json
   "password": "Secret123?"
 }
 
-### لاگین با یوزرنیم
+###  تکراری  409 
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "pouria",
+  "email": "pooria.babaie2002@gmail.com",
+  "password": "Secret123?"
+}
+
+### لاگین یوزرنیم
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -17,7 +27,7 @@ Content-Type: application/json
   "password": "Secret123?"
 }
 
-### لاگین با ایمیل
+### لاگین ایمیل
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -26,11 +36,21 @@ Content-Type: application/json
   "password": "Secret123?"
 }
 
-### لاگین اشتباه
+### لاگین پسورد اشتباه 401 
 POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "login": "wronguser",
-  "password": "wrongpass"
+  "login": "pouria",
+  "password": "WrongPass123!"
 }
+
+### /me  توکن معتبر
+GET http://localhost:3000/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicG91cmlhIiwiZW1haWwiOiJwb29yaWEuYmFiYWllMjAwMkBnbWFpbC5jb20iLCJpYXQiOjE3NTUwOTMxODQsImV4cCI6MTc1NTA5NDA4NH0.KxeTD4EjWVA-D0x5sOz3M7xq3hxoPFkMm_N95JuRcIE
+### /me بدون توکن ( 401 )
+GET http://localhost:3000/me
+
+### /me توکن اشتباه ( 401 )
+GET http://localhost:3000/me
+Authorization: Bearer invalid.token.value
